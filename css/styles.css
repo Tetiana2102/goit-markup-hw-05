@@ -43,8 +43,7 @@ section {
 
 /*----Верхняя линия----*/
 .header {
-  padding-top: 24px;
-  padding-bottom: 25px;
+ 
   background-color: var(--title-color);
   border-bottom-color:#ECECEC;
   border-bottom-width: 1px;
@@ -96,7 +95,26 @@ section {
   line-height: 1.33;
   letter-spacing: 0.02em;
   color: var(--header-color);
+  transition: color 250ms  cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  display: flex;
+  padding-top: 32px;
+  padding-bottom: 32px;
+  
 }
+.current::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 100%;
+  background-color: var(--accent-color);
+  height: 4px;
+  left: 0;
+  bottom: 0;
+  border-radius: 2px;
+}
+
+
 
 
 .header-contacts {
@@ -109,6 +127,7 @@ section {
   display: flex;
   flex-direction: row;
   align-items: baseline;
+  transition: color 250ms  cubic-bezier(0.4, 0, 0.2, 1);
 }
 .header-contacts:focus,
 .header-contacts:hover {
@@ -121,10 +140,7 @@ section {
 }
 .header-contacts:hover .header-email,
 .header-contacts:focus .header-email{
-  
   fill: var(--accent-color);
-  
-
 }
 .header-email {
   cursor: pointer;
@@ -192,6 +208,7 @@ section {
   cursor: pointer;
   display: flex;
   padding: 10px 32px;
+  transition: background-color 250ms  cubic-bezier(0.4, 0, 0.2, 1);
 
 }
 .tagline-btn-text {
@@ -305,8 +322,25 @@ section {
   width: calc(100% / 3 - 30px);
   margin-left: 30px;
   margin-bottom: 30px;
+  position: relative;
 }
 
+
+.about-main-text {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(47, 48, 58, 0.8);
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
+  padding: 27px;
+  width: 100%;
+  align-items: center;
+  text-transform: uppercase;
+  color: var(--title-color);
+  
+}
 /*--Наша команда--*/
 .team {
   background: #F5F4FA;
@@ -388,6 +422,8 @@ section {
   margin-bottom: 30px;
   flex-direction: column;
   align-items: center;
+  transition: background-color 250ms  cubic-bezier(0.4, 0, 0.2, 1);
+
 }
 
 
@@ -445,6 +481,7 @@ section {
     color: #AFB1B8;
     width: 170px;
     height: 92px;
+    transition: fill 250ms  cubic-bezier(0.4, 0, 0.2, 1);
     
   }
   .client-link:hover,
@@ -458,6 +495,7 @@ section {
 
   .client-icon {
     fill: #AFB1B8;
+    transition: fill 250ms  cubic-bezier(0.4, 0, 0.2, 1);
     
   }
 
@@ -552,6 +590,7 @@ section {
   padding: 12px;
   background-color: rgba(255, 255, 255, 0.1);
   color: #FFFFFF;
+  transition: background-color 250ms  cubic-bezier(0.4, 0, 0.2, 1);
 }
 .footer-link-icons {
   fill: #FFFFFF;
@@ -587,6 +626,7 @@ padding-right: 0px;
   border-radius: 4px;
   border: 0;
   min-height: 38px;
+  transition: background-color 250ms  cubic-bezier(0.4, 0, 0.2, 1), color 250ms  cubic-bezier(0.4, 0, 0.2, 1);
 }
 .filter-link:not(:last-child) {
   margin-right: 8px;
@@ -630,6 +670,7 @@ width: 1200px;
   border-bottom: 1px solid #EEEEEE;
   border-left: 1px solid #EEEEEE;
   border-right: 1px solid #EEEEEE;
+  position: relative;
 }
 .project {
   padding: 20px 24px;
@@ -663,4 +704,71 @@ width: 1200px;
 }
 .portfolio-item {
 cursor: pointer;
+transition: box-shadow 250ms  cubic-bezier(0.4, 0, 0.2, 1);
+}
+.portfolio-item:hover .portfolio-img-text{
+  transform: translateY(0);
+}
+
+.portfolio-item-wrap {
+  position: relative;
+  overflow: hidden;
+}
+.portfolio-img-text {
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 1.56;
+  color: var(--title-color);
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(33, 150, 243, 0.9);
+  height: 100%;
+  padding: 63px 24px 63px 24px;
+  transform: translateY(100%);
+  transition: transform 250ms  cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+}
+.backdrop.is-hidden .modal {
+  transform: scale(1.2);
+}
+.modal {
+  width: 528px;
+  min-height: 581px;
+  background-color: var(--title-color);
+  border-radius: 4px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); scale: (1);
+  transition: tranform 250ms;
+}
+.modal-close {
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: transparent;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+}
+.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
 }
