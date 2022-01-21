@@ -226,7 +226,13 @@ section {
 .tagline-btn:focus {
   background-color: #188CE8;
 }
+
+
+
 /*---Список качеств---*/
+
+
+
 .feature {
   padding-top: 94px;
   padding-bottom: 94px;
@@ -287,6 +293,7 @@ section {
   margin: -1px;
 }
 .feature-text {
+  padding-top: 10px;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
